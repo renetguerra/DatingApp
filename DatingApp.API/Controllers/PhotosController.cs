@@ -69,7 +69,7 @@ namespace DatingApp.API.Controllers
                 {
                     var uploadParams = new ImageUploadParams()
                     {
-                        File = new FileDescription(file.Name, stream),
+                        File = new FileDescription(file.FileName, stream),
                         Transformation = new Transformation()
                             .Width(500).Height(500).Crop("fill").Gravity("face")
                     };
@@ -91,7 +91,7 @@ namespace DatingApp.API.Controllers
             if (await _repo.SaveAll())
             {
                 var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
-                return CreatedAtRoute("GetPhoto", new { id = photo.Id }, photoToReturn);
+                return CreatedAtRoute("GetPhoto", new { userId = userId, id = photo.Id }, photoToReturn);
             }
 
             return BadRequest("Could not add the photo");
