@@ -2,4 +2,5 @@
 bin
 obj
 *.db
+wwwroot
 # appsettings.json #para que no se suba el archivo con las conecciones y no puedan ver mi Token#
